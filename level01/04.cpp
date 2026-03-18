@@ -1,12 +1,12 @@
 ﻿import std;
+using namespace std;
 
 auto main() -> int {
-    using namespace std;
-    using namespace std::ranges;
+    vector keys = { 1, 2, 3 };
+    vector values = { "one", "two", "three" };
 
-    auto v = views::iota(1, 6)          // 1,2,3,4,5
-        | views::transform([](int x) { return x * x; })
-        | to<std::vector>();  // {1,4,9,16,25}
-
-    print("{} ", v);
+    for (auto [k, v] : views::zip(keys, values)) {
+        std::println("{} → {}", k, v);
+    }
+    return 0;
 }
