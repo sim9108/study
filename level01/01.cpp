@@ -6,15 +6,15 @@ auto main() -> int {
 
 	//{[arg-id]:[fill-and-align][sign][#][0][width][.precision][L][type]}
 	//:[fill-and-align][width]
-	println("{:>10}", "hi");
-	println("{:<10}", "hi");
-	println("{:^10}", "hi");
-	println("{:*^10}", "hi");
+	println("{:>10}", "hi");	//"        hi"
+	println("{:<10}", "hi");	//"hi        "
+	println("{:^10}", "hi");	//"    hi    "
+	println("{:*^10}", "hi");	//"****hi****"
 
 	//:[sign]
-	println("{:+}", 42); // 항상 부호
-	println("{: }", 42); // 양수는 공백
-	println("{:-}", 42); // 음수만 부호 (기본값)
+	println("{:+}", 42);		// 항상 부호
+	println("{: }", 42);		// 양수는 공백
+	println("{:-}", 42);		// 음수만 부호 (기본값)
 
 	//[sign][#][0][width][.precision]
 	println("{:#x}", 255);			  // "0xff"
