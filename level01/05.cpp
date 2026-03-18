@@ -1,18 +1,11 @@
 ﻿import std;
 using namespace std;
 
-expected<int, string> divide(int a, int b) {
-    if (b == 0) return unexpected("b is 0"s);
-    return a / b;
-}
-
 auto main() -> int {
-    auto r = divide(10, 0);
-    if (r) {
-        println("result: {}", *r);
-    }
-    else {
-        println("error: {}", r.error());
+    vector v = { 1, 2, 3, 4, 5 };
+
+    for (auto [a, b] : views::adjacent<2>(v)) {
+        println("{} {}", a, b);
     }
     return 0;
 }
