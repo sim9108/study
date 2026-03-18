@@ -22,7 +22,7 @@ auto main() -> int {
 	println("{:#b}", 5);     // "0b101
 
 	//[width][.precision]
-	println("{:10}", 42);     // "        42"
+	println("{:010}", 42);     // "        42"
 	println("{:.5f}", 3.14);  // "3.14000"
 	println("{:{}.{}}", 3.14, 8, 3);  // 동적 width/precision
 
