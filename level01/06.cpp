@@ -5,6 +5,6 @@ auto main() -> int {
     vector v = { 1, 2, 3, 4, 5, 6, 7 };
 
     auto chunk = v | std::views::chunk(2);
-    println("{}", chunk);
+    for (auto&& c : chunk) println("{}", c);
     return 0;
 }
