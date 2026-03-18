@@ -2,15 +2,7 @@
 using namespace std;
 
 auto main() -> int {
-	println("Hello World C++23");
-
 	//{[arg-id]:[fill-and-align][sign][#][0][width][.precision][L][type]}
-	//:[fill-and-align][width]
-	println("{:>10}", "hi");	//"        hi"
-	println("{:<10}", "hi");	//"hi        "
-	println("{:^10}", "hi");	//"    hi    "
-	println("{:*^10}", "hi");	//"****hi****"
-
 	//:[sign]
 	println("{:+}", 42);		// 항상 부호
 	println("{: }", 42);		// 양수는 공백
@@ -24,13 +16,5 @@ auto main() -> int {
 	println("{:+10}", 42);			  // "       +42"
 	println("{:010.5f}", 3.14);		  // "0003.14000"
 	println("{:{}.{}}", 3.14, 8, 3);  // 동적 width/precision
-
-	//[L]
-	println("{}", format(locale("ko_KR"), "{:L}", 1000000));  // "1,000,000"
-
-	//? — escaped 출력
-	println("{}", format("{:?}", "hello\nworld"));  // "\"hello\\nworld\""
-	println("{:?}", '\t');           // "'\\t'"
-
 	return 0;
 }
