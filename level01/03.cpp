@@ -1,12 +1,12 @@
 ﻿import std;
+using namespace std;
 
 auto main() -> int {
-    using namespace std;
-    using namespace std::ranges;
+    vector<string> fruits = { "apple", "banana", "cherry" };
 
-    auto v = views::iota(1, 6)          // 1,2,3,4,5
-        | views::transform([](int x) { return x * x; })
-        | to<std::vector>();  // {1,4,9,16,25}
+    for (auto [i, fruit] : views::enumerate(fruits)) {
+        println("[{}] {}", i, fruit);
+    }
 
-    print("{} ", v);
+    return 0;
 }

@@ -1,18 +1,12 @@
 ﻿import std;
 using namespace std;
 
-expected<int, string> divide(int a, int b) {
-    if (b == 0) return unexpected("b is 0"s);
-    return a / b;
-}
-
 auto main() -> int {
-    auto r = divide(10, 0);
-    if (r) {
-        println("result: {}", *r);
+    for (vector v = { 1, 2, 3, 4, 5 }; auto x : v) {
+        println("{}", x);
     }
-    else {
-        println("error: {}", r.error());
-    }
+
+    vector data{ 1, 2, 3, 4, 5 };
+    println("{}", data);
     return 0;
 }
