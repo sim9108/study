@@ -1,18 +1,10 @@
 ﻿import std;
 using namespace std;
 
-template <typename T>
-void check_type(T val) {
-    if constexpr (integral<T>) {
-        println("integral");
-    }
-    else {
-        println("not integral");
-    }
-}
-
 auto main() -> int {
-    check_type(10);
-    check_type(3.14);
+    vector v = { 1, 2, 3, 4, 5, 6, 7 };
+
+    auto chunk = v | std::views::chunk(2);
+    for (auto&& c : chunk) println("{}", c);
     return 0;
 }

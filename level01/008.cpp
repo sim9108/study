@@ -2,9 +2,10 @@
 using namespace std;
 
 auto main() -> int {
-    vector v = { 1, 2, 3, 4, 5, 6, 7 };
+    vector v = { 1, 2, 3, 4, 5 };
 
-    auto chunk = v | std::views::chunk(2);
-    for (auto&& c : chunk) println("{}", c);
+    for (auto [a, b] : views::adjacent<2>(v)) {
+        println("{} {}", a, b);
+    }
     return 0;
 }

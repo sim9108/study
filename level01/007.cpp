@@ -2,10 +2,15 @@
 using namespace std;
 
 auto main() -> int {
-    vector v = { 1, 2, 3, 4, 5 };
+    vector keys = { 1, 2, 3 };
+    vector values = { "one", "two", "three" };
 
-    for (auto [a, b] : views::adjacent<2>(v)) {
-        println("{} {}", a, b);
+    println("keys:{}", keys);
+    println("values:{}", values);
+
+    for (auto [k, v] : views::zip(keys, values)) {
+        println("{} → {}", k, v);
     }
+
     return 0;
 }

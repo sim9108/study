@@ -2,14 +2,10 @@
 using namespace std;
 
 auto main() -> int {
-    vector keys = { 1, 2, 3 };
-    vector values = { "one", "two", "three" };
+    vector<string> fruits = { "apple", "banana", "cherry" };
 
-    println("keys:{}", keys);
-    println("values:{}", values);
-
-    for (auto [k, v] : views::zip(keys, values)) {
-        println("{} → {}", k, v);
+    for (auto [i, fruit] : views::enumerate(fruits)) {
+        println("[{}] {}", i, fruit);
     }
 
     return 0;

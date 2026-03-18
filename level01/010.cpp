@@ -1,22 +1,18 @@
 ﻿import std;
 using namespace std;
 
-struct Score {
-    string name;
-    int value;
-    explicit operator bool() { return value > 50; }
-};
+template <typename T>
+void check_type(T val) {
+    if constexpr (integral<T>) {
+        println("integral");
+    }
+    else {
+        println("not integral");
+    }
+}
 
 auto main() -> int {
-    vector<Score> scores{ { "Alice", 60 }, { "Dave", 45 } };
-
-    for (auto&& s : scores) {
-        if (auto&& [name, value] = s; s) {
-            println("name:{} score: {} passed", name, value);
-        }
-        else {
-            println("name:{} score: {} not passed", name, value);
-        }
-    }
+    check_type(10);
+    check_type(3.14);
     return 0;
 }
