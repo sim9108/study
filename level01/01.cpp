@@ -30,7 +30,6 @@ auto main() -> int {
 
 	//? — escaped 출력
 	println("{}", format("{:?}", "hello\nworld"));  // "\"hello\\nworld\""
-
 	println("{:?}", '\t');           // "'\\t'"
 
 	return 0;
