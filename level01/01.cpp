@@ -37,8 +37,5 @@ auto main() -> int {
 	println("{:?}", "hello\nworld");  // "\"hello\\nworld\""
 	println("{:?}", '\t');           // "'\\t'"
 
-	println("{}", vector{ 1,2,3 });         // "[1, 2, 3]"
-	println("{::>5}", vector{ 1,2,3 });     // "[    1,     2,     3]"
-	println("{}", pair{ 1, "hi" });
 	return 0;
 }
