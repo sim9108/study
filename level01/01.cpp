@@ -29,7 +29,8 @@ auto main() -> int {
 	println("{}", format(locale("ko_KR"), "{:L}", 1000000));  // "1,000,000"
 
 	//? — escaped 출력
-	println("{:?}", "hello\nworld");  // "\"hello\\nworld\""
+	println("{}", format("{:?}", "hello\nworld"));  // "\"hello\\nworld\""
+
 	println("{:?}", '\t');           // "'\\t'"
 
 	return 0;
