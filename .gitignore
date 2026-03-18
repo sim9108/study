@@ -1,0 +1,42 @@
+# --- Visual Studio 사용자 파일 및 디렉토리 ---
+.vs/
+*.user
+*.userosscache
+*.sln.docstates
+
+# --- 빌드 결과물 (Debug/Release 폴더 등) ---
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+[Aa]rm/
+[Aa]rm64/
+bld/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+
+# --- MSVC 생성 임시 파일 ---
+*.sdf
+*.suo
+*.opensdf
+*.VC.db
+*.VC.opendb
+*.pdb
+*.idb
+*.ilk
+*.tlog
+*.lastbuildstate
+*.nativecodeanalysis.xml
+
+# --- NuGet 패키지 ---
+*.nupkg
+packages/
+project.assets.json
+
+# --- 기타 ---
+*.aps
+*.ncb
