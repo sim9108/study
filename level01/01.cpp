@@ -26,7 +26,7 @@ auto main() -> int {
 	println("{:{}.{}}", 3.14, 8, 3);  // 동적 width/precision
 
 	//[L]
-	std::cout << format(locale("ko_KR"), "{:L}", 1000000) << endl;  // "1,000,000"
+	println("{}", format(locale("ko_KR"), "{:L}", 1000000));  // "1,000,000"
 
 	//? — escaped 출력
 	println("{:?}", "hello\nworld");  // "\"hello\\nworld\""
