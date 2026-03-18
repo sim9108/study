@@ -6,8 +6,13 @@ expected<int, string> divide(int a, int b) {
     return a / b;
 }
 
-int main() {
+auto main() -> int {
     auto r = divide(10, 0);
-    if (r) std::println("결과: {}", *r);
-    else   std::println("오류: {}", r.error());
+    if (r) {
+        println("result: {}", *r);
+    }
+    else {
+        println("error: {}", r.error());
+    }
+    return 0;
 }
