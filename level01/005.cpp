@@ -7,12 +7,10 @@ struct A {
 
     void run() {
         auto id = this_thread::get_id();
-        if (auto [it, inserted] = ids.insert(id); inserted) {
-            println("successfully insertion:{}", id);
-        }
-
         if (unique_lock lk{ mtx,defer_lock }; lk.try_lock_for(10ms)) {
-            println("I have try and modify...");
+            if (auto [it, inserted] = ids.insert(id); inserted) {
+                println("successfully insertion:{}", id);
+            }
         }
     }
 };
