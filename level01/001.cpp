@@ -9,7 +9,7 @@ auto main() -> int {
 	println("{2} {1} {0}", "one", "two", "three");	//"three two one"
 
 	//:[fill-and-align][width][type]
-	//[type]: d b/B o x/X f/F e/E a/A c s p ? #
+	//[type]: d b/B o x/X f/F e/E g/G a/A c s p ? #
 	println("{:>10}", "hi");	//"        hi"
 	println("{:<10}", "hi");	//"hi        "
 	println("{:^10}", "hi");	//"    hi    "
