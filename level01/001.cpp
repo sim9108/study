@@ -14,7 +14,7 @@ auto main() -> int {
 	println("{:<10}", "hi");	//"hi        "
 	println("{:^10}", "hi");	//"    hi    "
 	println("{:*^10}", "hi");	//"****hi****"
-	//println("{:*10}", "hi");	// Runtime Error fill만 올수는 없음
+	//println("{:*10}", "hi");	//Runtime Error fill만 올수는 없음
 	println("{:?}", "hi");	    //""hi""
 	println("{}", format("{:?}", "hello\nworld"));  // "\"hello\\nworld\""
 	println("{:?}", '\t');           // "'\\t'"
