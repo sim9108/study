@@ -2,14 +2,17 @@
 using namespace std;
 
 struct A {
-    set<thread::id> ids{};
+    set<int> values{};
     timed_mutex mtx{};
 
-    void run() {
+    void run(int v) {
         auto id = this_thread::get_id();
-        if (unique_lock lk{ mtx,defer_lock }; lk.try_lock_for(10ms)) {
-            if (auto [it, inserted] = ids.insert(id); inserted) {
-                println("successfully insertion:{}", id);
+        if (unique_lock lk{ mtx,defer_lock }; lk.try_lock_for(1ms)) {
+            if (auto [it, inserted] = values.insert(v); inserted) {
+                println("thread id:{} inserted:'{}'", id, v);
+            }
+            else {
+                println("fthread id:{} fail:'{}'", id, v);
             }
         }
     }
@@ -25,8 +28,8 @@ auto main() -> int {
     do {
         A a{};
         vector<jthread> ths{};
-        for (auto i = 0uz; i < 5uz; ++i) {
-            ths.emplace_back(&A::run, &a);
+        for (auto i = 0uz; i < 3uz; ++i) {
+            ths.emplace_back(&A::run, &a, i % 2);
         }
         this_thread::sleep_for(1s);
     } while (false);
