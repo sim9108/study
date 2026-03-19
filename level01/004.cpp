@@ -21,4 +21,3 @@ auto main() -> int {
     println("{}", p); //(10, 20)
     return 0;
 }
-

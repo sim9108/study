@@ -9,7 +9,7 @@ auto main() -> int {
 	println("{:-}", 42);		// 음수만 부호 (기본값)
 
 	//[sign][#][0][width][.precision][type]
-	//[type]: d b/B o x/X f/F e/E g/G a/A c s p ? #
+	//[type]: a/A b/B c d e/E f/F g/G o p/P s x/X ?
 	println("{:#x}", 255);			  // "0xff"
 	println("{:#o}", 8);			  // "010"
 	println("{:#b}", 5);			  // "0b101	
