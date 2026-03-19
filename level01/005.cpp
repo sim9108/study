@@ -5,6 +5,8 @@ struct A {
     set<int> values{};
     timed_mutex mtx{};
 
+    bool exist(int v) const { return values.contains(v); }
+
     void run(int v) {
         auto id = this_thread::get_id();
         if (unique_lock lk{ mtx,defer_lock }; lk.try_lock_for(1ms)) {
@@ -12,7 +14,7 @@ struct A {
                 println("thread id:{} inserted:'{}'", id, v);
             }
             else {
-                println("fthread id:{} fail:'{}'", id, v);
+                println("thread id:{} fail:'{}'", id, v);
             }
         }
     }
@@ -20,7 +22,7 @@ struct A {
 
 auto main() -> int {
     do {
-        for (vector v = { 1, 2, 3, 4, 5 }; auto x : v) {
+        for (vector v = { 1, 2, 3 }; auto x : v) {
             println("{}", x);
         }
     } while (false);
