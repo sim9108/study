@@ -2,7 +2,7 @@
 using namespace std;
 
 auto main() -> int {
-	//{[arg-id]:[fill-and-align][sign][#][0][width][.precision][L][type]}
+	//{[arg-id]:[[fill]align][sign][#][0][width][.precision][L][type]}
 	//:[sign]
 	println("{:+}", 42);		// 항상 부호
 	println("{: }", 42);		// 양수는 공백

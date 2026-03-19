@@ -4,11 +4,11 @@ using namespace std;
 auto main() -> int {
 	println("Hello World C++23");
 
-	//{[arg-id]:[fill-and-align][sign][#][0][width][.precision][L][type]}
+	//{[arg-id]:[[fill]align][sign][#][0][width][.precision][L][type]}
 	//[arg-id]
 	println("{2} {1} {0}", "one", "two", "three");	//"three two one"
 
-	//:[fill-and-align][width][type]
+	//:[[fill]align][width][type]
 	//[type]: d b/B o x/X f/F e/E g/G a/A c s p ? #
 	println("{:>10}", "hi");	//"        hi"
 	println("{:<10}", "hi");	//"hi        "
