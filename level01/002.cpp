@@ -8,7 +8,7 @@ auto main() -> int {
 	println("{: }", 42);		// 양수는 공백
 	println("{:-}", 42);		// 음수만 부호 (기본값)
 
-	//[sign][#][0][width][.precision]
+	//[sign][#][0][width][.precision][type]
 	println("{:#x}", 255);			  // "0xff"
 	println("{:#o}", 8);			  // "010"
 	println("{:#b}", 5);			  // "0b101	
