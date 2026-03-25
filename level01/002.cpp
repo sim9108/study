@@ -23,6 +23,7 @@ auto main() -> int {
 	println("{:02}", 1234);	          // "1234"
 	println("{:*<6}", "12345678");    // "12345678"
 	println("{:_<6.3}", "123hello");  // "123___"
-	println("{:{}.{}}", 3.14, 8, 3);  // 동적 width/precision
+	println("{:<.5}...", "안녕하세");  // "안녕..."
+	println("{:{}.{}}", 3.14, 8, 3);  // "    3.14" 동적 [width][.precision]
 	return 0;
 }
