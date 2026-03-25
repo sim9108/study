@@ -8,13 +8,12 @@ auto main() -> int {
 	println("{:_>-10}", 42);	      // "________42" (default)
 	println("{:_> 10}", 42);		  // "_______ 42"
 
-	println("{:?}", R"(test         
+	println("{:?}", R"(test
 )");                                 // "test\n"
 	//[sign][#][0][width][.precision][type]
 	//[type]: a/A b/B c d e/E f/F g/G o p/P s x/X ?
-	println("{:#x}", 255);			  // "0xff"
-	println("{:#o}", 8);			  // "010"
-	println("{:#b}", 5);			  // "0b101		
+	println("{0:#b} {0:#d} {0:#o} {0:#x}", 42);  // "0b101010 42 052 0x2a"
+
 	println("{:#}", 123.0);           // "123."
 	println("{}", 123.0);             // "123"
 	println("{:+#10X}", 'x');         // "     +0X78"
