@@ -4,8 +4,10 @@ using namespace std;
 auto main() -> int {
 	//{[arg-id]:[[fill]align][sign][#][0][width][.precision][L][type]}
 	//:[sign]
-	println("{0:+} {0:-} {0: }", 42); // "+42 42  42"
-
+	println("{:*>+10}", 42);	      // "*******+42"
+	println("{:*>-10}", 42);	      // "********42" (default)
+	println("{:*> 10}", 42);		  // "******* 42"
+	
 	//[sign][#][0][width][.precision][type]
 	//[type]: a/A b/B c d e/E f/F g/G o p/P s x/X ?
 	println("{:#x}", 255);			  // "0xff"
@@ -14,9 +16,6 @@ auto main() -> int {
 	println("{:#}", 123.0);           // "123."
 	println("{}", 123.0);             // "123"
 	println("{:010}", 42);			  // "0000000042"
-	println("{:*>+10}", 42);	      // "*******+42"
-	println("{:*> 10}", 42);		  // "******* 42"
-	println("{:*>-10}", 42);	      // "********42"
 	println("{:010.5f}", 3.14);		  // "0003.14000"
 	println("{:*<6.3}", "123456");    // "123***"
 	println("{:08d}", 255);			  // "00000255"
