@@ -4,9 +4,9 @@ using namespace std;
 auto main() -> int {
 	//{[arg-id]:[[fill]align][sign][#][0][width][.precision][L][type]}
 	//:[sign]
-	println("{:*>+10}", 42);	      // "*******+42"
-	println("{:*>-10}", 42);	      // "********42" (default)
-	println("{:*> 10}", 42);		  // "******* 42"
+	println("{:_>+10}", 42);	      // "_______+42"
+	println("{:_>-10}", 42);	      // "________42" (default)
+	println("{:_> 10}", 42);		  // "_______ 42"
 	
 	//[sign][#][0][width][.precision][type]
 	//[type]: a/A b/B c d e/E f/F g/G o p/P s x/X ?
