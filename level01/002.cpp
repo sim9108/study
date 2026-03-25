@@ -4,9 +4,7 @@ using namespace std;
 auto main() -> int {
 	//{[arg-id]:[[fill]align][sign][#][0][width][.precision][L][type]}
 	//:[sign]
-	println("{:+}", 42);		// 항상 부호
-	println("{: }", 42);		// 양수는 공백
-	println("{:-}", 42);		// 음수만 부호 (기본값)
+	println("{0:+} {0:-} {0: }", 42); // "+42 42  42"
 
 	//[sign][#][0][width][.precision][type]
 	//[type]: a/A b/B c d e/E f/F g/G o p/P s x/X ?
@@ -22,9 +20,9 @@ auto main() -> int {
 	println("{:010.5f}", 3.14);		  // "0003.14000"
 	println("{:*<6.3}", "123456");    // "123***"
 	println("{:08d}", 255);			  // "00000255"
-	println("{:+6d}", 'x');           // "  +120"
-	println("{:+06d}", 'x');          // "+00120"
-	println("{:0>+6d}", 'x');         // "00+120"
+	println("{:+#10X}", 'x');         // "     +0X78"
+	println("{:+#010X}", 'x');        // "+0X0000078"
+	println("{:0>+#10X}", 'x');       // "00000+0X78"
 	println("{:#010x}", 255);		  // "0x000000ff"	
 	println("{:*<6}", "12345678");    // "12345678"
 	println("{:02}", 1234);	          // "1234"
