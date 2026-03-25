@@ -8,6 +8,8 @@ auto main() -> int {
 	println("{:_>-10}", 42);	      // "________42" (default)
 	println("{:_> 10}", 42);		  // "_______ 42"
 
+	println("{:?}", R"(test         
+)");                                 // "test\n"
 	//[sign][#][0][width][.precision][type]
 	//[type]: a/A b/B c d e/E f/F g/G o p/P s x/X ?
 	println("{:#x}", 255);			  // "0xff"

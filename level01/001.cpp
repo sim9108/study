@@ -17,6 +17,8 @@ auto main() -> int {
 	//println("{:*10}", "hi");	//Runtime Error fill만 올수는 없음
 	println("{:?}", "hi");	    //""hi""
 	println("{}", format("{:?}", "hello\nworld"));  // "\"hello\\nworld\""
+	println("{:?}", R"(test         
+)");                                 // "test\n"
 	println("{:?}", '\t');           // "'\\t'"
 
 	//[L]
