@@ -1,34 +1,11 @@
 ﻿import std;
 using namespace std;
 
-template <typename T>
-void integral_type(T val) {
-    if constexpr (integral<T>) {
-        println("integral");
-    }
-    else {
-        println("not integral");
-    }
-}
-
-template <typename T>
-void test_check(T val) {
-    if constexpr (requires {val.test(); }) {
-        println("function found");
-    }
-    else {
-        println("function not found");
-    }
-}
-
-struct A {};
-struct B { void test() {} };
-
 auto main() -> int {
-    integral_type(10);
-    integral_type(3.14);
+    vector v = { 1, 2, 3, 4, 5 };
 
-    test_check(A{});
-    test_check(B{});
+    for (auto [a, b] : views::adjacent<2>(v)) {
+        println("{} {}", a, b);
+    }
     return 0;
 }

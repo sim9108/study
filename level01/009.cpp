@@ -2,9 +2,15 @@
 using namespace std;
 
 auto main() -> int {
-    vector v = { 1, 2, 3, 4, 5, 6, 7 };
+    vector keys = { 1, 2, 3 };
+    vector values = { "one", "two", "three" };
 
-    auto chunk = v | std::views::chunk(2);
-    for (auto&& c : chunk) println("{}", c);
+    println("keys:{}", keys);
+    println("values:{}", values);
+
+    for (auto [k, v] : views::zip(keys, values)) {
+        println("{} → {}", k, v);
+    }
+
     return 0;
 }

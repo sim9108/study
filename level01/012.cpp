@@ -1,20 +1,34 @@
 ﻿import std;
 using namespace std;
 
-optional<double> my_div(integral auto&& a, integral auto&& b) {
-    if (b == 0) return nullopt;
-    return a / b;
+template <typename T>
+void integral_type(T val) {
+    if constexpr (integral<T>) {
+        println("integral");
+    }
+    else {
+        println("not integral");
+    }
 }
 
-auto main() -> int {
-    vector<optional<double>> data{ my_div(10, 0),my_div(100, 10) };
-    for (auto&& datum : data) {
-        if (datum) {
-            println("{}", *datum);
-        }
-        else {
-            println("arugment error");
-        }
+template <typename T>
+void test_check(T val) {
+    if constexpr (requires {val.test(); }) {
+        println("function found");
     }
+    else {
+        println("function not found");
+    }
+}
+
+struct A {};
+struct B { void test() {} };
+
+auto main() -> int {
+    integral_type(10);
+    integral_type(3.14);
+
+    test_check(A{});
+    test_check(B{});
     return 0;
 }

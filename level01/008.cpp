@@ -2,10 +2,11 @@
 using namespace std;
 
 auto main() -> int {
-    vector v = { 1, 2, 3, 4, 5 };
+    vector<string> fruits = { "apple", "banana", "cherry" };
 
-    for (auto [a, b] : views::adjacent<2>(v)) {
-        println("{} {}", a, b);
+    for (auto [i, fruit] : views::enumerate(fruits)) {
+        println("[{}] {}", i, fruit);
     }
+
     return 0;
 }
