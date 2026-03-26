@@ -24,10 +24,26 @@ template<> struct std::formatter<color> : std::formatter<const char*> {
     }
 };
 
+struct A {
+    string name;
+};
 
+template <>
+struct formatter<A> {
+    formatter<string, char> fmt{};
+    constexpr auto parse(format_parse_context& ctx) { return fmt.parse(ctx); }
+
+    auto format(const A& p, format_context& ctx) const {
+        return fmt.format(p.name, ctx);
+    }
+};
 auto main() -> int {
     NS1::Point p{ 10, 20 };
-    println("{}", p);   // "(10, 20)"
-    println("{}", red); // "red"
+    println("{}", p);            // "(10, 20)"
+    println("{}", red);          // "red"
+    //println("{}", L"my test"); // ERROR
+
+    A a{ "simmon" };
+    println("{:*^10}", a);       //"**simmon**"
     return 0;
 }
