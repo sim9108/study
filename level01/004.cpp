@@ -2,14 +2,18 @@
 using namespace std;
 
 auto main() -> int {
-    //{[arg-id]:[[fill]align][sign][#][0][width][.precision][L][type]}
-    //:[[fill]align][width]
+    // [[fill]align][sign][#][0][width][.precision][L][type] =>format-spec
+    // [[range-fill]align][width][n][range-type][:format-spec]
+    // [[range-fill]align] range-fill로 { } : 불가능
+    // [range-type]: m s ?s
+    vector data{ 1, 2, 3 };
+    println("{}", data);               // "[1, 2, 3]"
+    println("{:*^30}", data);          // "**********[1, 2, 3]***********"
+    println("{:*^30:-^5}", data);      // "****[--1--, --2--, --3--]*****"
+    println("{:*^30n:-^5}", data);     // "*****--1--, --2--, --3--******"
+
     println("{}", pair{ 1, "hi" });   // "(1, hi)"
     println("{:m}", pair{ 1, "hi" }); // "1: "hi""
     println("{:n}", pair{ 1, "hi" }); // "1, "hi""
-
-    vector data{ 1, 2, 3 };
-    println("{}", data);              // "[1, 2, 3]"
-    println("{::>5}", data);          // "[    1,     2,     3]"
     return 0;
 }
