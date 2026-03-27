@@ -12,10 +12,10 @@ auto main() -> int {
     println("{:*^30:-^5}", data);      // "****[--1--, --2--, --3--]*****"
     println("{:*^30n:-^5}", data);     // "*****--1--, --2--, --3--******"
 
-    vector<char> sdata{ 'A','B','C' };
-    println("{}", sdata);              // "['A', 'B', 'C']"
-    println("{:s}", sdata);            // "ABC"
-    println("{:?s}", sdata);           // ""ABC""
+    array sdata{ 'A','B','C','\t','\n' };
+    println("{}", sdata);              // "['A', 'B', 'C', '\t', '\n']"
+    println("{:s}", sdata);            // "ABC  "<new line>
+    println("{:?s}", sdata);           // ""ABC\t\n""
 
     println("{}", pair{ 1, "hi" });    // "(1, hi)"
     println("{:m}", pair{ 1, "hi" });  // "1: "hi""
