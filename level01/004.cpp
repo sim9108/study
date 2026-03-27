@@ -1,14 +1,15 @@
 ﻿import std;
 using namespace std;
 
-
 auto main() -> int {
-    println("{} {}", 123, 456);                      // "123 456"
-    println("{}", formatted_size("{} {}", 123, 456));// "7"
-    println("{}", nullptr);                          // "0x0"
+    //{[arg-id]:[[fill]align][sign][#][0][width][.precision][L][type]}
+    //:[[fill]align][width]
+    println("{}", pair{ 1, "hi" });   // "(1, hi)"
+    println("{:m}", pair{ 1, "hi" }); // "1: "hi""
+    println("{:n}", pair{ 1, "hi" }); // "1, "hi""
 
-    int a{ 10 };
-    void* p = &a;
-    println("{0:P} {0:p}", p);           // "0X6FF7EC 0x6ff7ec"
+    vector data{ 1, 2, 3 };
+    println("{}", data);              // "[1, 2, 3]"
+    println("{::>5}", data);          // "[    1,     2,     3]"
     return 0;
 }
