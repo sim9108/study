@@ -1,22 +1,34 @@
 ﻿import std;
 using namespace std;
 
-struct Score {
-    string name;
-    int value;
-    explicit operator bool() { return value > 50; }
-};
+template <typename T>
+void integral_type(T val) {
+    if constexpr (integral<T>) {
+        println("integral");
+    }
+    else {
+        println("not integral");
+    }
+}
+
+template <typename T>
+void test_check(T val) {
+    if constexpr (requires {val.test(); }) {
+        println("function found");
+    }
+    else {
+        println("function not found");
+    }
+}
+
+struct A {};
+struct B { void test() {} };
 
 auto main() -> int {
-    vector<Score> scores{ { "Alice", 60 }, { "Dave", 45 } };
+    integral_type(10);
+    integral_type(3.14);
 
-    for (auto&& s : scores) {
-        if (auto&& [name, value] = s; s) {
-            println("name:{} score: {} passed", name, value);
-        }
-        else {
-            println("name:{} score: {} not passed", name, value);
-        }
-    }
+    test_check(A{});
+    test_check(B{});
     return 0;
 }

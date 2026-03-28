@@ -1,19 +1,21 @@
 ﻿import std;
 using namespace std;
 
-optional<double> my_div(integral auto&& a, integral auto&& b) {
-    if (b == 0) return nullopt;
-    return a / b;
-}
+struct Score {
+    string name;
+    int value;
+    explicit operator bool() { return value > 50; }
+};
 
 auto main() -> int {
-    vector<optional<double>> data{ my_div(10, 0),my_div(100, 10) };
-    for (auto&& datum : data) {
-        if (datum) {
-            println("{}", *datum);
+    vector<Score> scores{ { "Alice", 60 }, { "Dave", 45 } };
+
+    for (auto&& s : scores) {
+        if (auto&& [name, value] = s; s) {
+            println("name:{} score: {} passed", name, value);
         }
         else {
-            println("arugment error");
+            println("name:{} score: {} not passed", name, value);
         }
     }
     return 0;
