@@ -26,5 +26,6 @@ auto main() -> int {
 	println("{:_<6.3}", "123hello");  // "123___"
 	println("{:<.5}...", "안녕하세");  // "안녕..."
 	println("{:{}.{}}", 3.14, 8, 3);  // "    3.14" 동적 [width][.precision]
+	println("{:*^{}}", "hello", 10);  // "**hello***"
 	return 0;
 }
