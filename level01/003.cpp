@@ -10,5 +10,8 @@ auto main() -> int {
     int a{ 10 };
     void* p = &a;
     println("{0:P} {0:p}", p);           // "0X6FF7EC 0x6ff7ec"
+
+    println("{:🤡^6}", "x");             // "🤡🤡x🤡🤡🤡"
+    println("{:*^6}", "🤡🤡🤡");         // "🤡🤡🤡"
     return 0;
 }
