@@ -16,6 +16,8 @@ auto main() -> int {
     println("{}", sdata);              // "['A', 'B', 'C', '\t', '\n']"
     println("{:s}", sdata);            // "ABC  "<new line>
     println("{:?s}", sdata);           // ""ABC\t\n""
+
     println("{:?}", string("\0 \n \t \x02 \x1b", 9)); // ""\u{0} \n \t \u{2} \u{1b}""
+    println("{:?}", "e\u0301");       //""é""
     return 0;
 }
