@@ -10,11 +10,10 @@ auto main() -> int {
     println("{:m}", pair{ 1, "hi" });  // "1: "hi""
     println("{:n}", pair{ 1, "hi" });  // "1, "hi""
 
-    map<string, int> map;
-    map["math"] = 10;
-    map["lang"] = 100;
-    println("{}", map);               // "{"lang": 100, "math": 10}" 
-    println("{:n}", map);             // ""lang": 100, "math": 10"
+    vector<tuple<int, string>> m = { {1, "a"}, {2, "b"} };
+    println("{}", m);                 // "[(1, "a"), (2, "b")]"
+    println("{:m}", m);               // "{1: "a", 2: "b"}"
+    println("{:nm}", m);               // "1: "a", 2: "b""
 
     return 0;
 }
