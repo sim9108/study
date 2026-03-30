@@ -19,5 +19,14 @@ auto main() -> int {
 
     println("{:?}", string("\0 \n \t \x02 \x1b", 9)); // ""\u{0} \n \t \u{2} \u{1b}""
     println("{:?}", "e\u0301");       //""é""
+
+    println("{}", pair{ 1, "hi" });    // "(1, hi)"
+    println("{:m}", pair{ 1, "hi" });  // "1: "hi""
+    println("{:n}", pair{ 1, "hi" });  // "1, "hi""
+
+    vector<tuple<int, string>> m = { {1, "a"}, {2, "b"} };
+    println("{}", m);                 // "[(1, "a"), (2, "b")]"
+    println("{:m}", m);               // "{1: "a", 2: "b"}"
+    println("{:nm}", m);               // "1: "a", 2: "b""
     return 0;
 }
