@@ -28,5 +28,14 @@ auto main() -> int {
     println("{}", m);                 // "[(1, "a"), (2, "b")]"
     println("{:m}", m);               // "{1: "a", 2: "b"}"
     println("{:nm}", m);               // "1: "a", 2: "b""
+
+    vector<string> v = { "hello\t\n", "w\norld" };
+    println("{}", v);  // ["hello\t\n", "w\norld"
+    println("{::}", v);
+    /*
+    [hello
+    , w
+    orld]
+    */
     return 0;
 }
