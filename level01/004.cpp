@@ -31,6 +31,7 @@ auto main() -> int {
 
     vector<string> v = { "hello\t\n", "w\norld" };
     println("{}", v);                // ["hello\t\n", "w\norld"]
+    println("{:?}", v);              // ["hello\t\n", "w\norld"]
     println("{::}", v);
     /*
     [hello
