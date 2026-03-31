@@ -29,9 +29,5 @@ auto main() -> int {
     , w
     orld]
     */
-    vector<tuple<int, string>> m = { {1, "a"}, {2, "b"} };
-    println("{}", m);                 // "[(1, "a"), (2, "b")]"
-    println("{:m}", m);               // "{1: "a", 2: "b"}"
-    println("{:nm}", m);              // "1: "a", 2: "b""
     return 0;
 }
