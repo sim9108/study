@@ -20,15 +20,6 @@ auto main() -> int {
     println("{:?}", string("\0 \n \t \x02 \x1b", 9)); // ""\u{0} \n \t \u{2} \u{1b}""
     println("{:?}", "e\u0301");       //""é""
 
-    println("{}", pair{ 1, "hi" });    // "(1, hi)"
-    println("{:m}", pair{ 1, "hi" });  // "1: "hi""
-    println("{:n}", pair{ 1, "hi" });  // "1, "hi""
-
-    vector<tuple<int, string>> m = { {1, "a"}, {2, "b"} };
-    println("{}", m);                 // "[(1, "a"), (2, "b")]"
-    println("{:m}", m);               // "{1: "a", 2: "b"}"
-    println("{:nm}", m);              // "1: "a", 2: "b""
-
     vector<string> v = { "hello\t\n", "w\norld" };
     println("{}", v);                // ["hello\t\n", "w\norld"]
     println("{:?}", v);              // ["hello\t\n", "w\norld"]
@@ -38,5 +29,18 @@ auto main() -> int {
     , w
     orld]
     */
+
+    // {[arg-id]:[[tuple-fill]align][width][tuple-type]
+    // [[tuple-fill]align] tuple-fill로 { } : 불가능
+    // [tuple-type]: m n
+    println("{}", pair{ 1, "hi" });    // "(1, hi)"
+    println("{:m}", pair{ 1, "hi" });  // "1: "hi""
+    println("{:n}", pair{ 1, "hi" });  // "1, "hi""
+
+    vector<tuple<int, string>> m = { {1, "a"}, {2, "b"} };
+    println("{}", m);                 // "[(1, "a"), (2, "b")]"
+    println("{:m}", m);               // "{1: "a", 2: "b"}"
+    println("{:nm}", m);              // "1: "a", 2: "b""
+
     return 0;
 }
