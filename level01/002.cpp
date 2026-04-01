@@ -23,7 +23,7 @@ auto main() -> int {
 	println("{:_<6.3}", "123hello");  // "123___"
 	println("{:<.5}...", "안녕하세");  // "안녕..."
 	
-	// more smaller width than content size
+	// smaller width than content size
 	println("{0:02} {1:*<6}", 1234, "12345678"); // "1234 12345678"
 
 	// 동적 넓이 동적 정밀도
