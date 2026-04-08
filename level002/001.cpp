@@ -2,7 +2,7 @@
 using namespace std;
 using namespace std::filesystem;
 
-auto main() -> int {
+void view_pathname_spec(const path& p) {
 	// pathname:[root-name][root-directory][relative-path]
 	// root-directory:
 	//		directory - separator
@@ -12,17 +12,24 @@ auto main() -> int {
 	// relative-path:
 	//		filename
 	//		filename directory-separator relative-path
-	const path p = path("C:\\AVerMedia\\AssistCentralPro\\styles\\qwindowsvistastyle.dll");
-	cout <<"full path:" << p << endl;
-	cout << "root-name:" << p.root_name()<<endl;
-	cout << "root-directory:" << p.root_directory()<<endl;
-	cout << "root-path:" << p.root_path() << endl;
-	cout << "relative-path:\n";
+	cout << "full path:" << p << endl;
+	cout << "\troot-name:" << p.root_name() << endl;
+	cout << "\troot-directory:" << p.root_directory() << endl;
+	cout << "\troot-path:" << p.root_path() << endl;
+	cout << "\trelative-path:\n";
 	for (auto const& subpath : p.relative_path()) {
-		cout << subpath << endl;
+		cout << "\t\t" << subpath << endl;
 	}
-	cout << "filename:" << p.filename() << endl;
-	cout << "stem:" << p.stem() << endl;
-	cout << "extension:" << p.extension() << endl;
+	cout << "\tfilename:" << p.filename() << endl;
+	cout << "\tstem:" << p.stem() << endl;
+	cout << "\textension:" << p.extension() << endl;
+}
+
+auto main() -> int {
+	view_pathname_spec("C:/AVerMedia/qwindowsvistastyle.dll");
+	view_pathname_spec("//AssistCentralPro/qwindowsvistastyle.dll");
+	view_pathname_spec(".profile");
+	view_pathname_spec("//AssistCentralPro/..");
+	view_pathname_spec("//AssistCentralPro/.");
 	return 0;
 }
