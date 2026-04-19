@@ -1,0 +1,20 @@
+/*
+mydir
+├─project
+│  │  project.txt
+│  ├─sub3.lnk[../sub3]
+│  ├─skip
+│  │      skip.txt
+│  ├─sub1
+│  │  │  sub1.txt
+│  │  └─ssub1
+│  │          ssub1.txt
+│  └─sub2
+│          sub2.txt
+└─sub3
+    │  sub3.txt
+    ├─skip
+    │      ssub3.txt
+    └─ssub3
+            ssub3.txt
+*/
