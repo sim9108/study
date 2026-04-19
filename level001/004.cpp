@@ -3,10 +3,13 @@ using namespace std;
 
 
 auto main() -> int {
+    //{[arg-id]:[[fill]align][sign][#][0][width][.precision][L][type]}
+
     println("{} {}", 123, 456);                      // "123 456"
     println("{}", formatted_size("{} {}", 123, 456));// "7"
     println("{}", nullptr);                          // "0x0"
 
+    //[type]: a/A b/B c d e/E f/F g/G o p/P s x/X ?
     int a{ 10 };
     void* p = &a;
     println("{0:P} {0:p}", p);           // "0X6FF7EC 0x6ff7ec"
