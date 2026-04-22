@@ -10,7 +10,8 @@ auto main() -> int {
 		path src = base / "project";
 		path target = base / "newdir";
 
-		remove_all(target);
+		remove_all(target, ec);
+		if (ec) break;
 
 		copy_options opt = recursive | skip_symlinks;
 		//copy_options opt = recursive | directories_only;
