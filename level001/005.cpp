@@ -1,4 +1,5 @@
-﻿import std;
+﻿#pragma warning(disable:4686)
+import std;
 using namespace std;
 
 auto main() -> int {
