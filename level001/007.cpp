@@ -1,24 +1,18 @@
 ﻿import std;
 using namespace std;
 
-//{[arg-id]:[[fill]align][width]}
-
-void call3() {
-    println("{}", __func__);
-    auto st = stacktrace::current();
-    println("{}", st);
-}
-
-void call2() {
-    println("{}", __func__);
-    call3();
-}
-
-void call1() {
-    println("{}", __func__);
-    call2();
-}
 auto main() -> int {
-    call1();
+    // {[arg-id]:[[tuple-fill]align][width][tuple-type]
+    // [[tuple-fill]align] tuple-fill로 { } : 불가능
+    // [tuple-type]: m n
+    println("{}", pair{ 1, "hi" });    // "(1, hi)"
+    println("{:m}", pair{ 1, "hi" });  // "1: "hi""
+    println("{:n}", pair{ 1, "hi" });  // "1, "hi""
+
+    vector<tuple<int, string>> m = { {1, "a"}, {2, "b"} };
+    println("{}", m);                 // "[(1, "a"), (2, "b")]"
+    println("{:m}", m);               // "{1: "a", 2: "b"}"
+    println("{:nm}", m);              // "1: "a", 2: "b""
+
     return 0;
 }
