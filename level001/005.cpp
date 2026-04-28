@@ -19,7 +19,7 @@ auto main() -> int {
 
     string str1{ "안녕하세요" }, str2{ "👍🏽👍🏽" };
 
-  println("{:-^20}", "println");
+    println("{:-^20}", "println");
     println("{:*>20}\n{:*>20}", str1, str2);
 
     println("{:-^20}", "format");
@@ -29,9 +29,9 @@ auto main() -> int {
     printf("%0*s\n", 20, str1.data()); 
     printf("%0*s\n", 20, str2.data());
 
-   println("{:-^20}", "cout");
-   cout << setfill('*') << right << setw(20) << str1 << endl;
-   cout << setfill('*') << right << setw(20) << str2 << endl;
+    println("{:-^20}", "cout");
+    cout << setfill('*') << right << setw(20) << str1 << endl;
+    cout << setfill('*') << right << setw(20) << str2 << endl;
 
    // SetConsoleOutputCP(CP_UTF8);
     // 글리프(Glyph)는 '문자' 
