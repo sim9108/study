@@ -3,7 +3,6 @@ import std;
 using namespace std;
 
 auto main() -> int {
-    // [[fill]align][sign][#][0][width][.precision][L][type] =>format-spec
     // {[arg-id]:[[range-fill]align][width][n][range-type][:format-spec]} => range-format-spec
     // [[range-fill]align] range-fill로 { } : 불가능
     // [range-type]: m s ?s
