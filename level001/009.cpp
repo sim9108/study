@@ -1,21 +1,49 @@
 ﻿import std;
 using namespace std;
 
-//chrono-format-spec
+namespace NS1 {
+    struct Point { int x, y; };
+}
+namespace std {
+    using NS1::Point;
+    template <>
+    struct formatter<Point> {
+        constexpr auto parse(format_parse_context& ctx) { return ctx.begin(); }
 
+        auto format(const Point& p, format_context& ctx) const {
+            return std::format_to(ctx.out(), "({}, {})", p.x, p.y);
+        }
+    };
+}
+
+enum color { red, green, blue };
+const char* color_names[] = { "red", "green", "blue" };
+template<> struct std::formatter<color> : std::formatter<const char*> {
+    auto format(color c, format_context& ctx) const {
+        return formatter<const char*>::format(color_names[c], ctx);
+    }
+};
+
+struct A {
+    string name;
+};
+
+template <>
+struct formatter<A> {
+    formatter<string, char> fmt{};
+    constexpr auto parse(format_parse_context& ctx) { return fmt.parse(ctx); }
+
+    auto format(const A& p, format_context& ctx) const {
+        return fmt.format(p.name, ctx);
+    }
+};
 auto main() -> int {
-    // {[arg-id]:[[fill]align][width][precision][L][chrono-specs]}
-    // chrono-specs:[%[modifier][type]]...[literal-char]...
-    // modifier: E O
-    // type: a/A b/B c/C d/D e F g/G h/H I j m/M n p q/Q r/R S t/T u/U V w/W x/X y/Y z/Z %
-    // litera-char: {, },%를 제외한 문자
+    NS1::Point p{ 10, 20 };
+    println("{}", p);            // "(10, 20)"
+    println("{}", red);          // "red"
+    //println("{}", L"my test"); // ERROR
 
-    println("{:%T}", -10'000s);        // -02:46:40
-    println("{:%H:%M:%S}", -10'000s);  // -02:46:40
-    println("minutes {:%M, hours %H, seconds %S}", -10'000s);// minutes -46, hours 02, seconds 40
-
-    auto ds = chrono::seconds{ 0 };
-    chrono::sys_seconds epoch{ ds };
-    println("{:%Y-%m-%d %H:%M:%S %Z}", epoch);    // 1970-01-01 00:00:00 UTC
+    A a{ "simmon" };
+    println("{:*^10}", a);       //"**simmon**"
     return 0;
 }
