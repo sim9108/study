@@ -25,7 +25,7 @@ auto main() -> int {
 	println("{}", format(locale("ko_KR"), "{:L}", 1000000));  // "1,000,000"
 	
 	
-	    // std-format-spec: 
+    // std-format-spec: 
     //   [[fill]align][sign][#][0][width][.precision][L][type]
     // 표준 포맷 타입:(available) type
     //      charT*, const charT*, charT[N], string, string_view
