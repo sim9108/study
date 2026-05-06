@@ -1,49 +1,90 @@
 ﻿import std;
 using namespace std;
 
-namespace NS1 {
-    struct Point { int x, y; };
-}
-namespace std {
-    using NS1::Point;
-    template <>
-    struct formatter<Point> {
-        constexpr auto parse(format_parse_context& ctx) { return ctx.begin(); }
 
-        auto format(const Point& p, format_context& ctx) const {
-            return std::format_to(ctx.out(), "({}, {})", p.x, p.y);
-        }
-    };
-}
+struct Point { int x, y; };
 
-enum color { red, green, blue };
-const char* color_names[] = { "red", "green", "blue" };
-template<> struct std::formatter<color> : std::formatter<const char*> {
-    auto format(color c, format_context& ctx) const {
-        return formatter<const char*>::format(color_names[c], ctx);
+//(1,2);
+template<typename CharT>
+struct formatter<Point, CharT> : formatter<pair<int, int>, CharT> {
+    using BASE_TYPE = formatter<pair<int, int>, CharT>;
+
+    auto format(const Point& p, auto& ctx) const {
+        return BASE_TYPE::format(tie(p.x, p.y), ctx);
     }
 };
 
+enum class color { red, green, blue };
+
+// "red"
+template<typename CharT>
+struct formatter<color, CharT> : formatter<const CharT*, CharT> {
+    using BASE_TYPE = std::formatter<const CharT*, CharT>;
+
+    static constexpr const CharT* get_name(color c) {
+        if constexpr (is_same_v<CharT, char>) {
+            static constexpr const char* names[] = { "red", "green", "blue" };
+            return names[to_underlying(c)];
+        }
+        else {
+            static constexpr const wchar_t* names[] = { L"red", L"green", L"blue" };
+            return names[to_underlying(c)];
+        }
+    }
+
+    auto format(color c, auto& ctx) const {
+        return BASE_TYPE::format(get_name(c), ctx);
+    }
+};
+
+
 struct A {
+    int id;
     string name;
 };
 
 template <>
 struct formatter<A> {
-    formatter<string, char> fmt{};
-    constexpr auto parse(format_parse_context& ctx) { return fmt.parse(ctx); }
+
+    struct format_specs {
+        bool id{ false };
+    };
+    format_specs specs{};
+
+
+    // {:i}  =>id:"name", "name"
+    constexpr auto parse(format_parse_context& ctx) {
+        auto it = ctx.begin();
+        const auto end = ctx.end();
+        for (; it != end && *it != '}'; ++it) {
+            switch (*it) {
+            case  'i':specs.id = true; break;
+            default:
+                throw format_error("not accepted format spec");
+            }
+        }
+        return it;
+    }
 
     auto format(const A& p, format_context& ctx) const {
-        return fmt.format(p.name, ctx);
+        if (specs.id) {
+            return format_to(ctx.out(), "{}:\"{}\"", p.id, p.name);
+        }
+        return format_to(ctx.out(), "\"{}\"", p.name);
     }
 };
-auto main() -> int {
-    NS1::Point p{ 10, 20 };
-    println("{}", p);            // "(10, 20)"
-    println("{}", red);          // "red"
-    //println("{}", L"my test"); // ERROR
 
-    A a{ "simmon" };
-    println("{:*^10}", a);       //"**simmon**"
+auto main() -> int {
+    Point pt{ 10, 100 };
+    println("{:*^20}", pt);
+    wcout << format(L"{:*^20}", pt);
+
+    color red = color::red;
+    println("{:}", red);
+    wcout << format(L"{:*^10}", red) << endl;
+
+    A name{ 34,"simmon" };
+    println("{0}", name);
+    println("{0:i}", name);
     return 0;
 }
