@@ -2,6 +2,7 @@
 using namespace std;
 #include <cstdio>
 
+
 void save_bigfile() {
     cout << "buf default size:" << BUFSIZ << endl;
 
